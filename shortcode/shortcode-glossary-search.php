@@ -63,7 +63,7 @@ function word_search_fetch(){
 
     $the_query = new WP_Query( $args );
     
-    if( $the_query->have_posts() ) :
+    if( $the_query->have_posts() ) {
         
         while( $the_query->have_posts() ): $the_query->the_post(); 
 
@@ -72,7 +72,10 @@ function word_search_fetch(){
         endwhile;
         
         wp_reset_postdata();  
-    endif;
+        
+    } else {
+        printf( 'Whoops! Nothing found with <strong>%s</strong> in our words or definitions.', $_POST['keyword'] );
+    }
 
     die();
 }

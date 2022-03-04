@@ -14,7 +14,8 @@ ul.letters-list {
             width: 100%;
             text-align: center;
 
-            &:hover {
+            &:hover,
+            &.active {
                 background-color: $dark;
                 color: white;
             }

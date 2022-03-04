@@ -14,5 +14,99 @@ function elodin_output_glossary_letters( $atts ) {
         
     echo '</ul>';
     
+    ?>
+    
+    <script type="text/javascript">
+        
+        jQuery(document).ready(function( $ ) {
+            
+            $( '#search-words' ).submit( function(e) {
+                $( '.letter' ).removeClass( 'active' );
+            });
+	
+            $( '.letter' ).click( function(e) {
+                e.preventDefault();
+                
+                $( '#keyword' ).val( '' );
+                
+                var letter = $( this ).data( 'letter' );
+                                
+                $( '.letter' ).removeClass( 'active' );
+                $( this ).addClass( 'active' );
+                
+                letterfetch( letter );
+            });
+            
+        });        
+                
+        function letterfetch( letter ) {
+                                    
+            jQuery(document).ready(function( $ ) {
+                
+                console.log( letter );
+                                    
+                var ajaxscript = { ajax_url : '/wp-admin/admin-ajax.php' }
+                
+                $.ajax({
+                    url: ajaxscript.ajax_url,
+                    type: 'post',
+                    data: { 
+                        action: 'word_letter_search', 
+                        letter: letter
+                    },
+                    success: function(data) {
+                        $('#wordsearchresults').html( data );
+                    }
+                });
+            });            
+
+        }
+    </script>
+    
+    <?php
+    
     return ob_get_clean();
+}
+
+add_filter( 'posts_where', 'elodin_glossary_filter_first_letter', 10, 2 );
+function elodin_glossary_filter_first_letter( $where, $query ) {
+    global $wpdb;
+
+    $starts_with = esc_sql( $query->get( 'starts_with' ) );
+
+    if ( $starts_with ) {
+        $where .= " AND $wpdb->posts.post_title LIKE '$starts_with%'";
+    }
+
+    return $where;
+}
+
+
+add_action('wp_ajax_word_letter_search' , 'word_letter_search');
+add_action('wp_ajax_nopriv_word_letter_search','word_letter_search');
+function word_letter_search(){
+    
+    $args =  array( 
+        'posts_per_page'    => -1,
+        'starts_with'       => esc_attr( $_POST['letter'] ),
+        'post_type'         => array('words' )
+    );
+    
+    $the_query = new WP_Query( $args );
+    
+    if( $the_query->have_posts() ) {
+        
+        while( $the_query->have_posts() ): $the_query->the_post(); 
+
+            do_action( 'glossary_do_word_in_archive' );
+
+        endwhile;
+        
+        wp_reset_postdata();
+        
+    } else {
+        printf( 'Whoops! Nothing found starting with the letter <strong>%s</strong>.', esc_attr( $_POST['letter'] ) );
+    }
+
+    die();
 }

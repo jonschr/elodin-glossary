@@ -87,7 +87,13 @@ function word_letter_search(){
     $args =  array( 
         'posts_per_page'    => -1,
         'starts_with'       => esc_attr( $_POST['letter'] ),
-        'post_type'         => array('words' )
+        'post_type'         => array('words' ),
+        'fields'            => 'ids',
+        'orderby'           => 'title',
+        'order'             => 'ASC',
+        'update_post_meta_cache' => false, 
+        'update_post_term_cache' => false,
+        'no_found_rows' => true, 
     );
     
     $the_query = new WP_Query( $args );

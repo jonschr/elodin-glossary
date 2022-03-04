@@ -8,7 +8,7 @@ function glossary_word_in_archive() {
     $title = get_the_title();
     $content = apply_filters( 'the_content', get_the_content() );
     
-    printf( '<details class="%s">', implode( get_post_class(), ' ' ) );
+    echo '<details class="entry">';
 		
         if ( $title )
             printf( '<summary>%s</summary>', $title );

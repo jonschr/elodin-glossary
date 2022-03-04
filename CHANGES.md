@@ -6,3 +6,7 @@
 
 ### 0.3
 * Minor changes to styles to harden the plugin a bit
+
+### 0.3.1
+* Limit the output to 200 words until we can figure out how to optimize better
+* Only pull IDs for performance

@@ -60,7 +60,11 @@ function word_search_fetch(){
     $args =  array( 
         'posts_per_page'    => -1,
         's'                 => esc_attr( $_POST['keyword'] ),
-        'post_type'         => array('words' )
+        'post_type'         => array('words' ),
+        'fields'            => 'ids',
+        'update_post_meta_cache' => false, 
+        'update_post_term_cache' => false, 
+        'no_found_rows' => true, 
     );
 
     $the_query = new WP_Query( $args );

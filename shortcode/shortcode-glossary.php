@@ -7,8 +7,14 @@ function elodin_output_glossary( $atts ) {
     echo '<div class="search_result" id="wordsearchresults">';
         
     $args = array(
-        'post_type' => 'words',
-        'posts_per_page' => '-1'
+        'post_type'         => 'words',
+        'posts_per_page'    => '200',
+        'fields'            => 'ids',
+        'orderby'           => 'title',
+        'order'             => 'ASC',
+        'update_post_meta_cache' => false, 
+        'update_post_term_cache' => false, 
+        'no_found_rows' => true, 
     );
 
     // The Query

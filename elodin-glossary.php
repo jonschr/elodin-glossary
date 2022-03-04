@@ -81,8 +81,8 @@ function cmb2_sample_metaboxes() {
 		'id'            => 'words_details',
 		'title'         => __( 'Word Details', 'cmb2' ),
 		'object_types'  => array( 'words', ), // Post type
-		'context'       => 'normal',
-		'priority'      => 'high',
+		'context'       => 'side',
+		'priority'      => 'default',
 		'show_names'    => true, // Show field names on the left
 		// 'cmb_styles' => false, // false to disable the CMB stylesheet
 		// 'closed'     => true, // Keep the metabox closed by default

@@ -43,7 +43,7 @@ function elodin_glossary_content_type_registration() {
 		'hierarchical' => false,
 		'menu_position' => null,
 		'menu_icon' => 'dashicons-' . $icon,
-		'show_in_rest' => false, // enable gutenberg
+		'show_in_rest' => true, // enable gutenberg
 		'supports' => $supports,
 	);
 

@@ -11,7 +11,7 @@ $dark: #000000;
    ========================================================================== */
 
 summary {
-    display: auto; // older resets might set this to 'block' which breaks the display
+    display: list-item !important; // older resets might set this to 'block' which breaks the display
 }
 
 /* ==========================================================================

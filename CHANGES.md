@@ -1,3 +1,6 @@
+### 1.0.1
+* Style fix for <summary>
+
 ### 1.0
 * Bumping to 1.0 to see if the updater recognizes that better
 

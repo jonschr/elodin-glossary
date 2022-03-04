@@ -7,7 +7,7 @@ function elodin_output_glossary_search( $atts ) {
     //* The search form
     echo '<div class="word-search-wrap">';
         echo '<form id="search-words" action="/" method="post" autocomplete="off">';
-            echo '<input type="text" name="s" placeholder="Search the glossary..." id="keyword" class="input_search" onkeyup="fetch()">';
+            echo '<input type="text" name="s" placeholder="Search the glossary..." id="keyword" class="input_search">';
             echo '<button id="glossary-search">Search</button>';
         echo '</form>';
     echo '</div>';
@@ -17,16 +17,37 @@ function elodin_output_glossary_search( $atts ) {
     <script type="text/javascript">
         
         jQuery(document).ready(function( $ ) {
+            
+            function throttle(func, interval) {
+                var lastCall = 0;
+                return function() {
+                    var now = Date.now();
+                    if (lastCall + interval < now) {
+                        lastCall = now;
+                        return func.apply(this, arguments);
+                    }
+                };
+            }
+            
+            // $( "#keyword" ).keyup(function() {
+            //     fetch();              
+            // });
+            
+            $("#keyword").on("keypress", throttle(function(event) {
+                fetch();
+            }, 100));
 	
             $( '#search-words' ).submit( function(e) {
                 e.preventDefault();                
             });
-            
+                        
         });        
                 
         function fetch() {
                         
             jQuery(document).ready(function( $ ) {
+                
+                console.log( 'fetch' );
                     
                 var ajaxscript = { ajax_url : '/wp-admin/admin-ajax.php' }
                 

@@ -1,3 +1,6 @@
+### 1.0.2
+* Rate limiting our search
+
 ### 1.0.1
 * Style fix for <summary>
 

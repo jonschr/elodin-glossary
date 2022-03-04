@@ -1,0 +1,20 @@
+#wordsearchresults {
+    padding-top: 20px;
+    // padding: 20px 30px;
+    // background-color: $light;
+
+    details.entry {
+        margin-bottom: 10px;
+        box-shadow: $boxshadow;
+        background-color: white;
+
+        summary {
+            padding: 8px 15px;
+
+        }
+
+        .the-content {
+            padding: 0 15px 0 40px;
+        }
+    }
+}

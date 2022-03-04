@@ -1,0 +1,62 @@
+/* ==========================================================================
+   Colors
+   ========================================================================== */
+
+$light: #f7f7f7;
+$default: #999999;
+$dark: #000000;
+
+/* ==========================================================================
+   Vars
+   ========================================================================== */
+
+$boxshadow: 0 0 10px 0 rgba(black, 0.12);
+
+/* ==========================================================================
+   Queries
+   ========================================================================== */
+
+$thin: 600px;
+$medium: 960px;
+$wide: 1200px;
+
+@mixin mobile {
+    @media (max-width: #{$thin}) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media (min-width: #{$thin}) and (max-width: #{$medium}) {
+        @content;
+    }
+}
+
+@mixin notdesktop {
+    @media (max-width: #{$medium}) {
+        @content;
+    }
+}
+
+@mixin notmobile {
+    @media (min-width: #{$thin}) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: #{$medium}) {
+        @content;
+    }
+}
+
+@mixin desktop-wide {
+    @media (min-width: #{$wide}) {
+        @content;
+    }
+}
+
+pre {
+    font-size: 13px;
+    line-height: 1.2em;
+}

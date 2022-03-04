@@ -1,0 +1,23 @@
+ul.letters-list {
+    display: grid;
+    grid-template-columns: repeat(26, 1fr);
+
+    li {
+        list-style: none;
+
+        a {
+            padding: 5px 0;
+            display: inline-block;
+            color: $dark;
+            background-color: $light;
+            text-decoration: none;
+            width: 100%;
+            text-align: center;
+
+            &:hover {
+                background-color: $dark;
+                color: white;
+            }
+        }
+    }
+}

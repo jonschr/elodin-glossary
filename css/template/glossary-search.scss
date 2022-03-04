@@ -1,0 +1,28 @@
+.word-search-wrap {
+    box-shadow: 0 0 10px 0 rgba(black, 0.12);
+
+    form {
+        display: grid;
+        grid-template-columns: 1fr auto;
+
+        input,
+        button {
+            min-height: 50px;
+        }
+
+        input#keyword {
+            padding-left: 15px;
+            border: none;
+        }
+
+        button#glossary-search {
+            background-color: $dark;
+            border: none;
+            color: white;
+            padding-left: 25px;
+            padding-right: 25px;
+        }
+    }
+
+
+}

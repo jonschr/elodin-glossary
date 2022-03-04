@@ -1,3 +1,6 @@
+### 1.0
+* Bumping to 1.0 to see if the updater recognizes that better
+
 ### 0.3.2
 * Fixing style issue on older versions of normalize.css with the <summary> element
 * Performance

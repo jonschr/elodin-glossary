@@ -34,6 +34,7 @@ define ( 'ELODIN_GLOSSARY_VERSION', '0.2' );
 // INCLUDES //
 //////////////
 
+require_once( 'vendor/cmb2/init.php' );
 require_once( 'lib/post-type.php' );
 require_once( 'shortcode/words-template.php' );
 require_once( 'shortcode/shortcode-glossary.php' );
@@ -67,3 +68,32 @@ $myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
 
 // Optional: Set the branch that contains the stable release.
 $myUpdateChecker->setBranch( 'main' );
+
+//////////////
+// META BOX //
+//////////////
+
+
+add_action( 'cmb2_admin_init', 'cmb2_sample_metaboxes' );
+function cmb2_sample_metaboxes() {
+
+	$cmb = new_cmb2_box( array(
+		'id'            => 'words_details',
+		'title'         => __( 'Word Details', 'cmb2' ),
+		'object_types'  => array( 'words', ), // Post type
+		'context'       => 'normal',
+		'priority'      => 'high',
+		'show_names'    => true, // Show field names on the left
+		// 'cmb_styles' => false, // false to disable the CMB stylesheet
+		// 'closed'     => true, // Keep the metabox closed by default
+	) );
+
+	// Regular text field
+	$cmb->add_field( array(
+		'name'       => __( 'Part of speech', 'cmb2' ),
+		'desc'       => __( 'e.g. noun, verb, etc.', 'cmb2' ),
+		'id'         => 'part_of_speech',
+		'type'       => 'text',
+	) );
+
+}

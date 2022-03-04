@@ -30,20 +30,40 @@ define( 'ELODIN_GLOSSARY', dirname( __FILE__ ) );
 // Define the version of the plugin
 define ( 'ELODIN_GLOSSARY_VERSION', '0.1' );
 
+//////////////
+// INCLUDES //
+//////////////
+
 require_once( 'lib/post-type.php' );
-require_once( 'lib/shortcode/words-template.php' );
-require_once( 'lib/shortcode/shortcode-glossary.php' );
-require_once( 'lib/shortcode/shortcode-glossary-letters.php' );
-require_once( 'lib/shortcode/shortcode-glossary-search.php' );
+require_once( 'shortcode/words-template.php' );
+require_once( 'shortcode/shortcode-glossary.php' );
+require_once( 'shortcode/shortcode-glossary-letters.php' );
+require_once( 'shortcode/shortcode-glossary-search.php' );
+
+//////////////////////
+// REGISTER SCRIPTS //
+//////////////////////
 
 add_action( 'wp_enqueue_scripts', 'elodin_glossary_enqueue' );
 function elodin_glossary_enqueue() {
 
 	// Plugin styles
-    wp_enqueue_style( 'elodin-glossary-style', plugin_dir_url( __FILE__ ) . 'css/elodin-glossary-style.css', array(), ELODIN_GLOSSARY_VERSION, 'screen' );
-    
-    // // Script
-    // wp_register_script( 'slick-init', plugin_dir_url( __FILE__ ) . 'js/slick-init.js', array( 'slick-main' ), ELODIN_GLOSSARY_VERSION, true );
-	
+    wp_enqueue_style( 'elodin-glossary-style', plugin_dir_url( __FILE__ ) . 'css/elodin-glossary-style.css', array(), ELODIN_GLOSSARY_VERSION, 'screen' );	
 	
 }
+
+
+////////////////////
+// PLUGIN UPDATER //
+////////////////////
+
+// Updater
+require 'vendor/plugin-update-checker/plugin-update-checker.php';
+$myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
+	'https://github.com/jonschr/elodin-glossary',
+	__FILE__,
+	'elodin-glossary'
+);
+
+// Optional: Set the branch that contains the stable release.
+$myUpdateChecker->setBranch( 'main' );

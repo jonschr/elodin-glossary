@@ -1,9 +1,17 @@
 ul.letters-list {
     display: grid;
     grid-template-columns: repeat(26, 1fr);
+    padding: 0;
+    margin: 0;
+
+    @include mobile {
+        grid-template-columns: repeat(9, 1fr);
+    }
 
     li {
         list-style: none;
+        padding: 0;
+        margin: 0;
 
         a {
             padding: 5px 0;
@@ -13,6 +21,7 @@ ul.letters-list {
             text-decoration: none;
             width: 100%;
             text-align: center;
+            line-height: 1.6em;
 
             &:hover,
             &.active {

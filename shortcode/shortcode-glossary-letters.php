@@ -42,9 +42,7 @@ function elodin_output_glossary_letters( $atts ) {
         function letterfetch( letter ) {
                                     
             jQuery(document).ready(function( $ ) {
-                
-                console.log( letter );
-                                    
+                                                    
                 var ajaxscript = { ajax_url : '/wp-admin/admin-ajax.php' }
                 
                 $.ajax({

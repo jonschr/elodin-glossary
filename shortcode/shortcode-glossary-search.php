@@ -19,7 +19,7 @@ function elodin_output_glossary_search( $atts ) {
         jQuery(document).ready(function( $ ) {
 	
             $( '#search-words' ).submit( function(e) {
-                e.preventDefault();
+                e.preventDefault();                
             });
             
         });        
@@ -39,6 +39,8 @@ function elodin_output_glossary_search( $atts ) {
                     },
                     success: function(data) {
                         $('#wordsearchresults').html( data );
+                        
+                        $( '.letter' ).removeClass( 'active' );
                     }
                 });
             });            

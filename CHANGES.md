@@ -1,3 +1,6 @@
+## 1.0.4
+* Limit to 500 words in a single query
+
 ### 1.0.2
 * Rate limiting our search
 

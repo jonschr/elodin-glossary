@@ -95,7 +95,7 @@ function word_letter_search(){
         'update_post_term_cache' => false,
         'no_found_rows' => true, 
     );
-    
+        
     $the_query = new WP_Query( $args );
     
     if( $the_query->have_posts() ) {

@@ -8,7 +8,7 @@ function elodin_output_glossary( $atts ) {
         
     $args = array(
         'post_type'                 => 'words',
-        'posts_per_page'            => '-1',
+        'posts_per_page'            => '500',
         'fields'                    => 'ids',
         'orderby'                   => 'title',
         'order'                     => 'ASC',

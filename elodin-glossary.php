@@ -3,7 +3,7 @@
 	Plugin Name: Elodin Glossary
 	Plugin URI: https://elod.in
     Description: Just another plugin
-	Version: 1.1
+	Version: 1.1.1
     Author: Jon Schroeder
     Author URI: https://elod.in
 
@@ -28,7 +28,7 @@ if ( !defined( 'ABSPATH' ) ) {
 define( 'ELODIN_GLOSSARY', dirname( __FILE__ ) );
 
 // Define the version of the plugin
-define ( 'ELODIN_GLOSSARY_VERSION', '1.1' );
+define ( 'ELODIN_GLOSSARY_VERSION', '1.1.1' );
 
 //////////////
 // INCLUDES //

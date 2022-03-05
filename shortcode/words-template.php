@@ -7,11 +7,19 @@ function glossary_word_in_archive() {
     
     $title = get_the_title();
     $content = apply_filters( 'the_content', get_the_content() );
+    $part_of_speech = get_post_meta( get_the_ID(), 'part_of_speech', true );
     
     echo '<details class="entry">';
 		
-        if ( $title )
-            printf( '<summary>%s</summary>', $title );
+        if ( $title ) {
+            echo '<summary>';
+                echo $title;
+                
+                if ( $part_of_speech )
+                    printf( ' <span class="part-of-speech">%s</span>', $part_of_speech );
+                    
+            echo '</summary>';
+        }
             
         echo '<div class="the-content">';
         

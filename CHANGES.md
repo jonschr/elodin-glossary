@@ -1,3 +1,6 @@
+### 1.1.1.
+* Adding the parts of speech into the mix
+
 ### 1.1
 * URL manipulation and allowing links for ?letter=b and so on
 * Resetting the URL when any search is performed

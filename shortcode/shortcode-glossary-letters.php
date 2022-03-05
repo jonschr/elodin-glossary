@@ -9,7 +9,7 @@ function elodin_output_glossary_letters( $atts ) {
     echo '<ul class="letters-list">';
     
         foreach( $letters as $letter ) {
-            printf( '<li><a class="letter" href="#" data-letter="%s">%s</a></li>', $letter, $letter );
+            printf( '<li><a class="letter" href="?letter=%s" data-letter="%s">%s</a></li>', $letter, $letter, $letter );
         }
         
     echo '</ul>';
@@ -33,6 +33,16 @@ function elodin_output_glossary_letters( $atts ) {
                                 
                 $( '.letter' ).removeClass( 'active' );
                 $( this ).addClass( 'active' );
+                
+                // Construct URLSearchParams object instance from current URL querystring.
+                var queryParams = new URLSearchParams(window.location.search);
+                
+                // Set new or modify existing parameter value. 
+                queryParams.set("letter",  letter );
+                
+                // Replace current querystring with the new one.
+                history.replaceState( null, null, "?" + queryParams.toString() );
+
                 
                 letterfetch( letter );
             });

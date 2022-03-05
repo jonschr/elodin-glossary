@@ -1,4 +1,8 @@
-## 1.0.4
+### 1.1
+* URL manipulation and allowing links for ?letter=b and so on
+* Resetting the URL when any search is performed
+
+### 1.0.4
 * Limit to 500 words in a single query
 
 ### 1.0.2

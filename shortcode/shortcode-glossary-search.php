@@ -28,27 +28,33 @@ function elodin_output_glossary_search( $atts ) {
                     }
                 };
             }
-            
-            // $( "#keyword" ).keyup(function() {
-            //     fetch();              
-            // });
-            
+                        
             $("#keyword").on("keypress", throttle(function(event) {
+                resetURL();
                 fetch();
             }, 100));
 	
-            $( '#search-words' ).submit( function(e) {
+            $( '#search-words' ).submit( function(e) {            
                 e.preventDefault();                
             });
                         
-        });        
+        });
+        
+        function resetURL() {
+            //* reset the URL
+            var currURL = window.location.href;
+            var beforeQueryString = currURL.split("?")[0];  
+            console.log( beforeQueryString );
+            history.replaceState( null, null, beforeQueryString );
+        }
                 
         function fetch() {
                         
             jQuery(document).ready(function( $ ) {
+                                
+               
                 
-                console.log( 'fetch' );
-                    
+                //* do our query
                 var ajaxscript = { ajax_url : '/wp-admin/admin-ajax.php' }
                 
                 $.ajax({
